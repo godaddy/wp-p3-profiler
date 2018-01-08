@@ -7,7 +7,7 @@
  * @package P3_Profiler
  */
 class P3_Profiler_Plugin {
-	
+
 	/**
 	 * Add the 'P3 Profiler' option under the 'Tools' menu
 	 */
@@ -17,7 +17,7 @@ class P3_Profiler_Plugin {
 			__( 'P3 Plugin Profiler', 'p3-profiler' ),
 			'manage_options',
 			P3_PLUGIN_SLUG,
-			array( 'P3_Profiler_Plugin_Admin', 'dispatcher' )				
+			array( 'P3_Profiler_Plugin_Admin', 'dispatcher' )
 		);
 	}
 
@@ -42,7 +42,7 @@ class P3_Profiler_Plugin {
 	 */
 	public static function activate() {
 		global $wp_version;
-		
+
 		// Version check, only 3.3+
 		if ( ! version_compare( $wp_version, '3.3', '>=' ) ) {
 			if ( function_exists( 'deactivate_plugins' ) )
@@ -50,7 +50,7 @@ class P3_Profiler_Plugin {
 			die( '<strong>P3</strong> requires WordPress 3.3 or later' );
 		}
 
-		// mu-plugins doesn't exist	
+		// mu-plugins doesn't exist
 		if ( !file_exists( WPMU_PLUGIN_DIR ) && is_writable( dirname( WPMU_PLUGIN_DIR ) ) ) {
 			wp_mkdir_p( WPMU_PLUGIN_DIR );
 		}
@@ -60,6 +60,14 @@ class P3_Profiler_Plugin {
 				'<' . "?php // Start profiling\n@include_once( WP_PLUGIN_DIR . '/p3-profiler/start-profile.php' ); ?" . '>'
 			);
 		}
+
+		// PHP >= 7 Compatibility Notice
+		if ( version_compare( PHP_VERSION, '7.0.0', '>=' ) ) {
+			if ( function_exists( 'deactivate_plugins' ) ) {
+				die( '<strong>P3</strong> is not compatible with PHP 7.0.0 or later.' );
+			}
+		}
+
 	}
 
 	/**
