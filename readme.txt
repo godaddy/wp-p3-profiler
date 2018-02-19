@@ -2,7 +2,7 @@
 Contributors: Godaddy, StarfieldTech, kurtpayne, asink
 Tags: debug, debugging, developer, development, performance, plugin, profiler, speed
 Requires at least: 3.3
-Tested up to: 4.7.2
+Tested up to: 4.6
 Stable tag: 1.5.3.9
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -10,6 +10,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 See which plugins are slowing down your site.  This plugin creates a performance report for your site.
 
 == Description ==
+
+> <strong>Important:</strong> P3 is not compatible with PHP 7.0.0 or later
+
 This plugin creates a profile of your WordPress site's plugins' performance by measuring their impact on your site's load time.  Often times, WordPress sites load slowly because of poorly configured plugins or because there are so many of them. By using the P3 plugin, you can narrow down anything causing slowness on your site.
 
 This plugin uses the canvas element for drawing charts and requires requires Firefox, Chrome, Opera, Safari, or IE9 or later.  This plugin will not work in IE8 or lower.
